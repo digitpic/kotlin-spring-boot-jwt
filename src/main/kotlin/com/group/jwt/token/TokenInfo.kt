@@ -1,7 +1,7 @@
 package com.group.jwt.token
 
 class TokenInfo (
-    val userId: String,
+    val userId: Long,
     val prefix: String,
     val accessToken: String,
     val refreshToken: String,
