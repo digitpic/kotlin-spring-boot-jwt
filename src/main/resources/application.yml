@@ -22,5 +22,5 @@ spring:
 server:
   port: 8080
 jwt:
-  access_token_secret: PeuXozVJvCOXn0u8n8nKw6TI2VLsgIwmcjgXqpR8Miw=
-  refresh_token_secret: eP/P1QrbKe3xRHLppj8rUXrWBzm5WE64uC4/k29y1ZI=
+  access_secret_key: PeuXozVJvCOXn0u8n8nKw6TI2VLsgIwmcjgXqpR8Miw=
+  refresh_secret_key: eP/P1QrbKe3xRHLppj8rUXrWBzm5WE64uC4/k29y1ZI=
