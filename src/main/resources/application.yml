@@ -19,3 +19,6 @@ spring:
       port: 6379
 server:
   port: 8080
+jwt:
+  access_secret: PeuXozVJvCOXn0u8n8nKw6TI2VLsgIwmcjgXqpR8Miw=
+  refresh_secret: eP/P1QrbKe3xRHLppj8rUXrWBzm5WE64uC4/k29y1ZI=
