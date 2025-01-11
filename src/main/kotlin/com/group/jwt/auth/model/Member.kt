@@ -10,6 +10,9 @@ import java.time.LocalDateTime
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
+import org.springframework.security.core.GrantedAuthority
+import org.springframework.security.core.authority.SimpleGrantedAuthority
+import org.springframework.security.core.userdetails.UserDetails
 
 @Entity
 @EntityListeners(AuditingEntityListener::class)
@@ -23,7 +26,7 @@ class Member(
     val email: String,
 
     @Column(nullable = false)
-    val name: String,
+    val username: String,
 
     @Column(nullable = false)
     val password: String,
@@ -35,4 +38,16 @@ class Member(
     @LastModifiedDate
     @Column(nullable = false)
     val updatedAt: LocalDateTime = LocalDateTime.now(),
-)
+) : UserDetails {
+    override fun getAuthorities(): MutableCollection<out GrantedAuthority> {
+        return mutableListOf(SimpleGrantedAuthority("ROLE_USER"))
+    }
+
+    override fun getPassword(): String {
+        return password
+    }
+
+    override fun getUsername(): String {
+        return username
+    }
+}
