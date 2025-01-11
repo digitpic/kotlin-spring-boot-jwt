@@ -16,7 +16,7 @@ import org.springframework.security.core.userdetails.UserDetails
 
 @Entity
 @EntityListeners(AuditingEntityListener::class)
-class Member(
+class User(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, unique = true, updatable = false)
@@ -25,9 +25,11 @@ class Member(
     @Column(nullable = false, unique = true)
     val email: String,
 
+    @JvmField
     @Column(nullable = false)
     val username: String,
 
+    @JvmField
     @Column(nullable = false)
     val password: String,
 
