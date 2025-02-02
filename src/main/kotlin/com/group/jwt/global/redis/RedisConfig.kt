@@ -1,5 +1,6 @@
-package com.group.jwt.redis
+package com.group.jwt.global.redis
 
+import java.time.Duration
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.cache.CacheManager
 import org.springframework.context.annotation.Bean
@@ -15,18 +16,17 @@ import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer
 import org.springframework.data.redis.serializer.RedisSerializationContext.SerializationPair.fromSerializer
 import org.springframework.data.redis.serializer.StringRedisSerializer
-import java.time.Duration
 
 @Configuration
 class RedisConfig(
     @Value("\${spring.data.redis.host}")
-    val host: String,
+    private val host: String,
 
     @Value("\${spring.data.redis.port}")
-    val port: Int,
+    private val port: Int,
 
     @Value("\${spring.data.redis.cache.ttl}")
-    val cacheTtl: Long
+    private val cacheTtl: Long
 ) {
     @Bean
     fun redisConnectionFactory(): RedisConnectionFactory {

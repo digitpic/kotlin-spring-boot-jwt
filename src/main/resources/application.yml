@@ -1,3 +1,6 @@
+server:
+  port: 8080
+
 spring:
   application:
     name: jwt
@@ -23,10 +26,7 @@ spring:
       cache:
         ttl: 2
 
-server:
-  port: 8080
-
-jwt:
-  issuer: jkw5033@gmail.com
-  secret_key: PeuXozVJvCOXn0u8n8nKw6TI2VLsgIwmcjgXqpR8Miw=
+  jwt:
+    issuer: jkw5033@gmail.com
+    secret_key: PeuXozVJvCOXn0u8n8nKw6TI2VLsgIwmcjgXqpR8Miw=
 

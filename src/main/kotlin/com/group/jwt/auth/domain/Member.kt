@@ -7,12 +7,10 @@ import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import java.time.LocalDateTime
-import lombok.Getter
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import org.springframework.security.core.GrantedAuthority
-import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 
 @Entity
@@ -21,27 +19,33 @@ class Member(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, unique = true, updatable = false)
-    val id: Long,
+    private val id: Long,
 
     @Column(nullable = false, unique = true)
-    val email: String,
+    private val email: String,
 
-    @JvmField
     @Column(nullable = false)
-    val name: String,
+    private var name: String,
 
-    @JvmField
     @Column(nullable = false)
-    val password: String,
+    private val password: String,
 
     @CreatedDate
     @Column(nullable = false, updatable = false)
-    val createdAt: LocalDateTime = LocalDateTime.now(),
+    private val createdAt: LocalDateTime = LocalDateTime.now(),
 
     @LastModifiedDate
     @Column(nullable = false)
-    val updatedAt: LocalDateTime = LocalDateTime.now(),
+    private val updatedAt: LocalDateTime = LocalDateTime.now(),
 ) : UserDetails {
+    fun getId(): Long {
+        return id
+    }
+
+    fun getName(): String {
+        return name
+    }
+
     override fun getAuthorities(): MutableCollection<out GrantedAuthority> {
         return mutableListOf()
     }
@@ -51,6 +55,6 @@ class Member(
     }
 
     override fun getUsername(): String {
-        return name
+        return email
     }
 }
